@@ -1,7 +1,7 @@
 package io.github.ljun51.spi.service;
 
-public interface IShout {
+public interface ServiceSpi {
     
-    void shout();
+    void say();
     
 }
