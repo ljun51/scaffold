@@ -11,7 +11,7 @@ public class IndexController {
         return "";
     }
 
-    @RequestMapping
+    @RequestMapping("/test")
     public String test() {
         return "UP";
     }
