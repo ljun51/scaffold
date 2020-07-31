@@ -11,6 +11,7 @@
     <description>scaffold</description>
 
     <modules>
+        <module>java-spi</module>
         <module>springboot-docker</module>
     </modules>
 
