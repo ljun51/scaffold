@@ -12,6 +12,7 @@
 
     <modules>
         <module>java-spi</module>
+        <module>springboot-auditing</module>
         <module>springboot-docker</module>
     </modules>
 
