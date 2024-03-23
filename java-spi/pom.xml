@@ -11,7 +11,7 @@
     </parent>
 
     <artifactId>java-spi</artifactId>
-    <description>java SPI机制</description>
+    <description>java SPI 机制</description>
 
     <dependencies>
        <dependency>

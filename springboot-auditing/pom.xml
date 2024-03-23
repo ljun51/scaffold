@@ -11,7 +11,7 @@
     </parent>
 
     <artifactId>springboot-auditing</artifactId>
-    <description>spring boot审计</description>
+    <description>spring boot 审计</description>
 
     <dependencies>
        <dependency>

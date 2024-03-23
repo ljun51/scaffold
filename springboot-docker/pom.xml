@@ -11,7 +11,7 @@
     </parent>
 
     <artifactId>springboot-docker</artifactId>
-    <description>spring boot应用docker化</description>
+    <description>spring boot 应用 docker 化</description>
 
     <dependencies>
        <dependency>
