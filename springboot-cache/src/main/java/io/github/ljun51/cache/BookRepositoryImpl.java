@@ -1,5 +1,6 @@
 package io.github.ljun51.cache;
 
+import io.github.ljun51.cache.model.Book;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 

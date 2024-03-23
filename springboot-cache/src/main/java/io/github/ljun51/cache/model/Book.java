@@ -1,4 +1,4 @@
-package io.github.ljun51.cache;
+package io.github.ljun51.cache.model;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
