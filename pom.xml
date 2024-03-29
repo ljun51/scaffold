@@ -11,6 +11,8 @@
     <description>scaffold</description>
 
     <modules>
+        <module>java-concurrent</module>
+        <module>java-jcf</module>
         <module>java-spi</module>
         <module>springboot-auditing</module>
         <module>springboot-cache</module>
