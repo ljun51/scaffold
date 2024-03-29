@@ -1,0 +1,13 @@
+# 为命名空间配置默认的 CPU 请求和限制
+# 以下为 LimitRange 的示例清单。 清单中声明了默认 CPU 请求和默认 CPU 限制。
+apiVersion: v1
+kind: LimitRange
+metadata:
+  name: cpu-limit-range
+spec:
+  limits:
+    - default:
+        cpu: 1
+      defaultRequest:
+        cpu: 0.5
+      type: Container

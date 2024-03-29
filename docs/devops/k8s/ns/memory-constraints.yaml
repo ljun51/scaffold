@@ -1,0 +1,13 @@
+# 配置命名空间的最小和最大内存约束
+# 下面是 LimitRange 的示例清单。 清单中声明了最大的内存限制和最小的内存限制
+apiVersion: v1
+kind: LimitRange
+metadata:
+  name: mem-min-max-demo-lr
+spec:
+  limits:
+    - max:
+        memory: 1Gi
+      min:
+        memory: 500Mi
+      type: Container

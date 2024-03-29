@@ -1,0 +1,10 @@
+Host *
+    #!! EnableTrzsz Yes
+    #!! EnableDragFile Yes
+    #!! EnableZmodem Yes
+Host mbook
+    User john
+    HostName mbook
+    Port 22
+    #!! encPassword 7215c77084b85e9878701afcec0b748ee8f603de9786789521285cebef09f7a1
+

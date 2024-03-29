@@ -1,0 +1,13 @@
+# 为命名空间配置默认的内存请求和限制
+# 以下为 LimitRange 的示例清单。 清单中声明了默认的内存请求和默认的内存限制
+apiVersion: v1
+kind: LimitRange
+metadata:
+  name: mem-limit-range
+spec:
+  limits:
+    - default:
+        memory: 512Mi
+      defaultRequest:
+        memory: 256Mi
+      type: Container

@@ -1,0 +1,79 @@
+
+@HOST = {{host}}
+# @HOST = http://127.0.0.1:8090
+
+### 取部门列表
+POST {{HOST}}/patient
+Content-Type: application/json
+
+{
+    "input": {
+        "cardId": "53302419420314051X",
+        // "residenceCode":"1813128",
+        // "regCode":"",
+        // "cardId": "",
+        // "patientId": "2322880,1820745,2000527,2072637,2100563,2111395,2145961,2198539,2203833,2233579,2247409",
+        "patientId": "",
+        // "beginDate": "2024-01-18 17:50:01",
+        // "endDate": "2024-01-28 00:00:00"
+         "beginDate": "",
+         "endDate": ""
+    }
+}
+
+### 密码登录
+# @name oauth
+GET {{HOST}}/auth/oauth/token?username=ljun51&password=password&grant_type=password&scope=server
+Content-Type: application/json
+Authorization: Basic dGVzdDp0ZXN0
+
+### healthy-crowd
+###
+@token = {{oauth.response.body.$.token_type}} {{oauth.response.body.$.access_token}}
+GET {{HOST}}/v2?labelCode=TLGLRQ
+Content-Type: application/json
+Authorization: {{token}}
+
+###
+@token = {{oauth.response.body.$.token_type}} {{oauth.response.body.$.access_token}}
+GET {{HOST}}/home
+Content-Type: application/json
+Authorization: {{token}}
+
+###
+@token = {{oauth.response.body.$.token_type}} {{oauth.response.body.$.access_token}}
+POST {{HOST}}/batch
+Content-Type: application/json
+Authorization: {{token}}
+
+[
+  {
+    "labelCode": "GY",
+    "idCard": "360311198512040553"
+  }
+]
+
+###
+@token = {{oauth.response.body.$.token_type}} {{oauth.response.body.$.access_token}}
+PUT {{HOST}}/1704753143428071426
+Content-Type: application/json
+Authorization: {{token}}
+
+{
+    "reasonType": "3",
+    "reasonDesc": "test"
+}
+
+###
+@token = {{oauth.response.body.$.token_type}} {{oauth.response.body.$.access_token}}
+GET {{HOST}}/v2?startStatDate=2024-01&endStatDate=2024-01
+Content-Type: application/json
+Authorization: {{token}}
+
+###
+@token = {{oauth.response.body.$.token_type}} {{oauth.response.body.$.access_token}}
+GET {{HOST}}/page?isTrusted=true&current=1&size=20
+Content-Type: application/json
+Authorization: {{token}}   
+
+

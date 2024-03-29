@@ -1,0 +1,13 @@
+# 等价于 kubectl expose deployment/my-nginx
+apiVersion: v1
+kind: Service
+metadata:
+  name: my-nginx
+  labels:
+    run: my-nginx
+spec:
+  ports:
+    - port: 80
+      protocol: TCP
+  selector:
+    run: my-nginx

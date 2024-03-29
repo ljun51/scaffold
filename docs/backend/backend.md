@@ -1,0 +1,12 @@
+# 后端
+## 方法论
+* 开发原则（SOLID）
+* 分布式理论（CAP）
+* 分布式理论（BASE）
+* 事物理论（ACID）
+* 微服务理论（康威定律）
+## Go
+## Java
+## Spring
+## Rust
+## Swift

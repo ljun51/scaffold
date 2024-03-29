@@ -1,0 +1,17 @@
+# 为命名空间配置内存和 CPU 配额
+# ResourceQuota 在命名空间中设置了如下要求：
+# 1. 在该命名空间中的每个 Pod 的所有容器都必须要有内存请求和限制，以及 CPU 请求和限制。
+# 2. 在该命名空间中所有 Pod 的内存请求总和不能超过 1 GiB。
+# 3. 在该命名空间中所有 Pod 的内存限制总和不能超过 2 GiB。
+# 4. 在该命名空间中所有 Pod 的 CPU 请求总和不能超过 1 cpu。
+# 5. 在该命名空间中所有 Pod 的 CPU 限制总和不能超过 2 cpu。
+apiVersion: v1
+kind: ResourceQuota
+metadata:
+  name: mem-cpu-demo
+spec:
+  hard:
+    requests.cpu: "1"
+    requests.memory: 1Gi
+    limits.cpu: "2"
+    limits.memory: 2Gi

@@ -1,0 +1,1 @@
+msg %username% /time:10 "休息一下吧，站起来走走~"

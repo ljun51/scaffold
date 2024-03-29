@@ -1,0 +1,9 @@
+# 配置命名空间下 Pod 配额
+# 该命名空间下 Pod 的配额是 2 个
+apiVersion: v1
+kind: ResourceQuota
+metadata:
+  name: pod-demo
+spec:
+  hard:
+    pods: "2"
