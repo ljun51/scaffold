@@ -14,6 +14,11 @@
 ## Pulsar
 ## [Redis](./redis/redis.md)
 ## ShardingSphere
-## Seata
+## 分布式事物
+### Seata(./seata.md)
+### Atomikos
+在 Spring Boot 2.x.x 中存在。
+### Bitronix
+在 Spring Boot 2.x.x 中存在。
 ## Tomcat
 ## Zookeeper
