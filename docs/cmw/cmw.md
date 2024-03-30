@@ -7,12 +7,13 @@
 ## Kafka
 ## [MyBatis](./mybatis.md)
 ## Nacos
-```shell
-docker-compose -f cmw/nacos/standalone-mysql-8.yaml up -d
-```
+    ```shell
+    docker-compose -f cmw/nacos/standalone-mysql-8.yaml up -d
+    ```
 ## Nginx
 ## Pulsar
 ## [Redis](./redis/redis.md)
 ## ShardingSphere
+## Seata
 ## Tomcat
 ## Zookeeper

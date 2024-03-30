@@ -61,14 +61,70 @@ Java的 `java.util` 包主要提供了以下三种类型的集合：
 
 总之，**happens-before** 原则是 Java 内存模型中的关键概念，用于保证线程之间的内存可见性和有序性。
 
+### AQS队列
+**AbstractQueuedSynchronizer**（AQS）是Java并发包中的一个核心组件，用于实现锁和同步器。许多我们熟知的并发工具，如`ReentrantLock`、`CountDownLatch`、`Semaphore`等，都借助了AQS来实现。
+
+让我们深入了解一下AQS的设计思想和组成部分：
+
+1. **基础**：
+  - AQS定义了一套多线程访问共享资源的同步模板，解决了实现同步器时涉及的大量细节问题。
+  - 虽然大多数开发者可能永远不会直接使用AQS来实现自己的同步器，但了解AQS的原理对于架构设计和面试都很有帮助。
+
+2. **组成结构**：
+  - AQS由三部分组成：
+    - **同步状态（state）**：维护了一个同步状态变量，不同同步器的state语义可以由实现者自定义。
+    - **CLH队列**：AQS内部维护的FIFO双向队列，用于管理等待资源的线程。
+    - **条件变量（ConditionObject）**：包含Node组成的条件单向队列，用于支持条件等待。
+
+3. **CLH队列**：
+  - CLH（Craig, Landin, and Hagersten）队列是AQS内部的FIFO队列。
+  - 每个等待资源的线程被封装成一个Node节点，通过CAS原子操作插入队列尾部。
+  - CLH队列具有公平性、无锁快速插入等优点。
+
+4. **Node内部类**：
+  - Node是AQS的内部类，每个等待资源的线程都对应一个Node节点。
+  - Node的waitStatus表示等待状态，nextWaiter用于标记共享式或独占式。
+  - Node在CLH队列时，nextWaiter表示下一个节点指针。
+
+总之，AQS是一个用于实现锁和同步器的框架，通过CLH队列管理竞争资源的线程，Node节点是AQS的重要组成部分。
+
+### ReentrantLock
+**ReentrantLock**（可重入锁）是Java中的一种同步工具，它提供了比内置`synchronized`关键字更灵活和可定制的锁定机制。让我们深入了解一下ReentrantLock的原理和实现细节：
+
+1. **CAS（Compare and Swap）**：
+  - CAS是一种无锁算法，用于实现原子操作。
+  - 它有三个操作数：内存值V、旧的预期值A、要修改的新值B。
+  - 当且仅当预期值A和内存值V相同时，将内存值V修改为B，否则不做任何操作。
+  - 在Java中，CAS主要由`sun.misc.Unsafe`类通过JNI调用CPU底层指令实现。
+
+2. **AQS队列**：
+  - AQS（AbstractQueuedSynchronizer）是ReentrantLock的核心组件，用于构建锁和同步容器的框架。
+  - AQS使用FIFO的队列（也叫CLH队列）来表示排队等待锁的线程。
+  - 队列头节点称作“哨兵节点”或“哑节点”，它不与任何线程关联，其他节点与等待线程关联。
+
+3. **ReentrantLock的流程**：
+  - ReentrantLock首先通过CAS尝试获取锁，如果锁已被占用，线程加入AQS队列并等待。
+  - 当前驱线程的锁被释放后，挂在CLH队列为首的线程被唤醒，然后继续CAS尝试获取锁。
+  - 非公平锁允许其他线程抢占，而公平锁只有队头的线程可以获取锁。
+
+4. **lock() 和 unlock() 的实现**：
+  - `lock()`函数：
+    - 非公平锁：如果成功通过CAS修改了state，线程标志自己成功获取锁；否则线程加入AQS队列并等待。
+    - 公平锁：直接进入等待队列。
+  - `tryAcquire()`函数：
+    - 检查state字段，若为0，尝试占用；若不为0，检查当前锁是否被自己占用，若是则更新state表示重入锁次数。
+
+总之，ReentrantLock提供了更灵活的锁控制，支持公平锁和非公平锁，且可以显式地加锁和解锁。
+
 ### JUC
 ### [线程](./java-thread.md)
 ### 线程池
-#### FutureTask
-#### ThreadPoolExecutor
+#### [FutureTask](./java-futuretask.md)
+#### ThreadPoolExecutor(./java-threadpoolexecutor.md)
 #### ScheduledThreadPoolExecutor
 #### Fork/Join
-#### CountDownLatch
+Fork/Join框架是Java并发工具包中的一种可以将一个大任务拆分为很多小任务来异步执行的工具，自JDK1.7引入。
+#### [CountDownLatch](./java-countdownlatch.md)
 #### CyclicBarrier
 ### 锁
 #### [Synchronized 关键字](./java-synchronized.md)
