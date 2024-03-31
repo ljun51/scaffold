@@ -1,14 +1,31 @@
 # Docker
 
-## daemon.json 
+## Docker Desktop
+## Docker Extensions
+Docker 扩展允许您使用 Docker Desktop 中的第三方工具来扩展其功能。
+
+您可以将自己喜欢的开发工具无缝连接到应用程序开发和部署工作流。使用调试、测试、安全和网络功能增强 Docker Desktop，并使用扩展 SDK 创建自定义加载项。
+
+您可以在 Docker Hub 或 Docker Desktop 内的扩展市场中浏览可用扩展的列表。
+## Docker Engine
+### Docker Storage
+### Docker Networking
+### Docker Containers
+### Logs and metrics
+### Security
+### Swarm mode
+## Docker Compose
+## Docker Build
+## 常用配置
+### daemon.json 
 位置位于 `/etc/docker/daemon.json`
 
-## 添加当前用户为 docker 用户
+### 添加当前用户为 docker 用户
 
     # 执行完后需要重新登录
     sudo usermod -aG docker $USER
 
-## Docker 容器的重启策略
+### Docker 容器的重启策略
 
 * no
 默认策略，在容器退出时不重启容器。启动容器时不添加参数 --restart 即可。
@@ -27,7 +44,7 @@
 
 > docker run -d --restart=always tomcat
 
-## docker save和docker export的区别
+### docker save和docker export的区别
 * docker save 保存的是镜像（image），docker export 保存的是容器（container）；
 * docker load 用来载入镜像包，docker import 用来载入容器包，但两者都会恢复为镜像；
 * docker load 不能对载入的镜像重命名，而 docker import 可以为镜像指定新名称。
