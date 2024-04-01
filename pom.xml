@@ -11,6 +11,7 @@
     <description>scaffold</description>
 
     <modules>
+        <module>java-basic</module>
         <module>java-juc</module>
         <module>java-jcf</module>
         <module>java-spi</module>
