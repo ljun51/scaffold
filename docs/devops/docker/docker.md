@@ -9,6 +9,18 @@ Docker 扩展允许您使用 Docker Desktop 中的第三方工具来扩展其功
 您可以在 Docker Hub 或 Docker Desktop 内的扩展市场中浏览可用扩展的列表。
 ## Docker Engine
 ### Docker Storage
+Docker 有两个选项让容器在主机上存储文件，以便即使在容器停止后文件也能保留：`卷`和`绑定挂载`。
+
+Docker 还支持将文件存储在主机内存中的容器。此类文件不会持久化。如果在 Linux 上运行 Docker，则使用 `tmpfs` 挂载将文件存储在主机的系统内存中。如果在 Windows 上运行 Docker，则使用`命名管道`将文件存储在主机的系统内存中。
+
+区分卷、绑定挂载、tmpfs可之间差异的一个简单方法是数据位于 Docker 主机上的位置。
+![挂载类型](./images/types-of-mounts.webp)
+* `卷`存储在由 Docker 管理的主机文件系统的一部分中（Linux 上的 /var/lib/docker/volumes/）。非 Docker 进程不应修这一部分。卷是在 Docker 中保存数据的最佳方式。
+* `绑定挂载`可以存储在主机系统上的任何位置。它们甚至可能是重要的系统文件或目录。 Docker 主机或 Docker 容器上的非 Docker 进程可以随时修改它们。
+* `tmpfs` 仅存储在主机系统的内存中，并且永远不会写入主机系统的文件系统。
+
+`绑定挂载`和卷都可以通过 `-v` 或 `--volume` 标志被挂载到容器里，只是语法上有一些差异。而 `tmpfs` 可以使用 `--tmpfs` 标志。建议对容器和服务，`绑定挂载`、`卷`或 `tmpfs` 挂载使用 `--mount` 标志，因为语法更清晰。
+
 ### Docker Networking
 ### Docker Containers
 ### Logs and metrics

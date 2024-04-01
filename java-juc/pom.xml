@@ -10,7 +10,7 @@
         <version>1.0.0</version>
     </parent>
 
-    <artifactId>java-concurrent</artifactId>
+    <artifactId>java-juc</artifactId>
     <description>java 线程、并发相关</description>
 
     <dependencies>
