@@ -22,6 +22,15 @@
 ### Hive 数据仓库
 ### Sqoop （已退役）数据库ETL
 ### HBase 分布式数据库
+### Phoenix 
+Phoenix是HBase的开源SQL皮肤。可以使用标准JDBC API代替HBase客户端API来创建表，插入数据和查询HBase数据。
+
+Phoenix特点
+
+* 支持标准化SQL，可以是hbase处理更加灵活复杂事务的能力。
+* 完美支持Hbase二级索引创建。
+* 容易集成：如Spark，Hive，Pig，Flume和Map Reduce。
+
 ### Flink 实时计算框架
 ### Spark 内存计算框架
 ### YARN 资源管理系统
