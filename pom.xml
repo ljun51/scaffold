@@ -15,9 +15,11 @@
         <module>java-juc</module>
         <module>java-jcf</module>
         <module>java-spi</module>
+        <module>kotlin-basic</module>
         <module>springboot-auditing</module>
         <module>springboot-cache</module>
         <module>springboot-docker</module>
+        <module>springboot-kotlin</module>
     </modules>
 
     <parent>
