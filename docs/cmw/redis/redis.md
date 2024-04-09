@@ -7,11 +7,11 @@ docker network create redis_network
 
 ```shell
 docker run -d \
+--name redis-server \
 --restart=always \
 -p 6379:6379 \
---name redis-server \
--v ./redis/redis.conf:/etc/redis/redis.conf \
--v ./redis/data:/data \
+-v ./cmw/redis/redis.conf:/etc/redis/redis.conf \
+-v ./cmw/redis/data:/data \
 --network redis_network \
 redis:7.2.4 \
 redis-server /etc/redis/redis.conf --appendonly yes

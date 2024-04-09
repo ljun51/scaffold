@@ -1,6 +1,9 @@
 
-@HOST = {{host}}
-# @HOST = http://127.0.0.1:8090
+# @HOST = {{host}}
+@HOST = http://127.0.0.1:32080
+
+### Test
+GET {{HOST}}
 
 ### 取部门列表
 POST {{HOST}}/patient

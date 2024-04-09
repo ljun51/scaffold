@@ -33,6 +33,20 @@ echo "deb [signed-by=/etc/apt/keyrings/kubernetes-apt-keyring.gpg] https://mirro
 kubeadm init  --kubernetes-version=v1.26.14 --pod-network-cidr=10.244.0.0/16 --image-repository registry.aliyuncs.com/google_containers
 ```
 
+## dashboard
+### 安装 Dashboard UI
+```shell
+kubectl apply -f https://raw.githubusercontent.com/kubernetes/dashboard/v2.7.0/aio/deploy/recommended.yaml
+```
+### 命令行代理
+你可以使用 kubectl 命令行工具来启用 Dashboard 访问，命令如下：
+```shell
+kubectl proxy
+```
+kubectl 会使得 Dashboard 可以通过 http://localhost:8001/api/v1/namespaces/kubernetes-dashboard/services/https:kubernetes-dashboard:/proxy/ 访问。
+
+UI 只能 通过执行这条命令的机器进行访问。更多选项参见 kubectl proxy --help。
+
 ## DNS
 ```shell
 # Kubernetes 提供了一个自动为其它 Service 分配 DNS 名字的 DNS 插件 Service。 可以通过如下命令检查它是否在工作:

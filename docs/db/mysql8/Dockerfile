@@ -1,4 +1,4 @@
-FROM mysql:8.0.33
+FROM mysql:8.0.34
 
 LABEL maintainer="mysql8"
 

@@ -6,8 +6,11 @@ metadata:
   labels:
     run: my-nginx
 spec:
+  type: NodePort
   ports:
     - port: 80
       protocol: TCP
+      nodePort: 32080
+      targetPort: 80
   selector:
     run: my-nginx

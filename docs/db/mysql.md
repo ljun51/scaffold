@@ -1,5 +1,32 @@
 # MySQL
 
+## mysql docker
+```shell
+docker run -d --name mysql5 \
+  --restart=always \
+  -p 3306:3306 \
+  -e MYSQL_ROOT_PASSWORD=123456 \
+  -e TZ=Asia/Shanghai \
+  -v ./db/mysql5/conf:/etc/mysql/conf.d \
+  -v ./db/mysql5/data:/var/lib/mysql \
+  mysql:5.7.44 \
+  --lower_case_table_names=1 \
+  --max_connections=1000
+```
+
+```shell
+docker run -d --name mysql8 \
+  --restart=always \
+  -p 3306:3306 \
+  -e TZ=Asia/Shanghai \
+  -e MYSQL_ROOT_PASSWORD=123456 \
+  -v ./db/mysql8/conf:/etc/mysql/conf.d \
+  -v ./db/mysql8/data:/var/lib/mysql \
+  mysql:8.0.34 \
+  --lower_case_table_names=1 \
+  --max_connections=1000
+```
+
 ## Buffer Pool、Redo Log Buffer 和undo log、redo log、bin log 概念以及关系？
 * Buffer Pool 是 MySQL 的一个非常重要的组件，因为针对数据库的增删改操作都是在 Buffer Pool 中完成的
 * Undo log 记录的是数据操作前的样子
@@ -327,30 +354,6 @@ mysqldump -h118.118.116.208 -uabc123456 -pabc123456 --databases abc123456_client
 
 2.2 mysql cli
 > mysql -h182.92.107.203 -P53406 -uroot -p'!@#qwe123' gw_fj < t_cxjm_mzzy.sql
-
-## mysql docker
-```shell
-docker run --name mysql5 \
-  -p 33060:3306 \
-  -e MYSQL_ROOT_PASSWORD=ljun51 \
-  -e TZ=Asia/Shanghai \
-  -d --restart=always mysql:5.7.39 \
-  --lower_case_table_names=1 \
-  --max_connections=1000
-```
-
-```shell
-docker run -d --name mysql8 \
-  --restart=always \
-  -p 33060:3306 \
-  -e TZ=Asia/Shanghai \
-  -e MYSQL_ROOT_PASSWORD=ljun51 \
-  -v ./db/mysql8/conf:/etc/mysql/conf.d \
-  -v ./db/mysql8/data:/var/lib/mysql \
-  mysql:8.0.34 \
-  --lower_case_table_names=1 \
-  --max_connections=1000
-```
 
 ## Insert两种形式
 ### INSERT INTO SELECT

@@ -15,7 +15,7 @@ services:
         condition: service_healthy
     restart: always
   mysql:
-    container_name: mysql
+    container_name: mysql8
     build:
       context: .
       dockerfile: ./image/mysql/8/Dockerfile
@@ -23,9 +23,9 @@ services:
     env_file:
       - ./env/mysql.env
     volumes:
-      - ./mysql:/var/lib/mysql
+      - ../../db/mysql8/data:/var/lib/mysql
     ports:
-      - "63306:3306"
+      - "3306:3306"
     healthcheck:
       test: [ "CMD", "mysqladmin" ,"ping", "-h", "localhost" ]
       interval: 5s
