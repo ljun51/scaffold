@@ -128,6 +128,11 @@ MySQL 中有多种类型的锁，每种锁都有不同的特点和适用场景�
 
 ## mysql常用操作
 
+### 建库
+```shell
+CREATE DATABASE `ruoyi-vue-pro` CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
+```
+
 ### 修改密码
 
 ALTER USER 'root'@'%' IDENTIFIED BY 'ljun51';
