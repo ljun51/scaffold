@@ -10,10 +10,6 @@ import java.util.List;
  */
 public class JcfList {
 
-    public static void main(String[] args) {
-        basicUsage();
-    }
-
     private static void basicUsage() {
         List<Integer> list = Arrays.asList(1, 2, 3, 4, 5);
 

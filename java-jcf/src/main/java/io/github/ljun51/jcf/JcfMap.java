@@ -10,11 +10,6 @@ import java.util.Map;
  */
 public class JcfMap {
 
-    public static void main(String[] args) {
-
-        basicUsage();
-    }
-
     /**
      * Basic usage
      */
