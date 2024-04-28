@@ -7,6 +7,7 @@
     git config --global user.email ljun51@outlook.com
     git config --global core.excludesFile '~/.gitignore'
     git config --global core.excludesFile "$Env:USERPROFILE\.gitignore"
+    git config --system core.longpaths true
     git config --global credential.helper store
 ```
 
