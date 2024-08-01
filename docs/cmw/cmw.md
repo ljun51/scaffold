@@ -11,6 +11,9 @@
     docker-compose -f cmw/nacos/standalone-mysql-8.yaml up -d
     ```
 ## Nginx
+
+docker run -p 8080:80 --name nginx -v ./cmw/nginx/html:/usr/share/nginx/html -d nginx:latest
+
 ## Pulsar
 ## [Redis](./redis/redis.md)
 ## ShardingSphere
