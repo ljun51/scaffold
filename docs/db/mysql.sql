@@ -13,6 +13,16 @@ alter table health_crowd.generate_tag_record convert to character set utf8mb4 co
 show variables like 'slow_query_log';
 show variables like 'slow_query_log_file';
 show variables like 'long_query_time';
+-- 查看binlog日志清单
+show binary logs;
+-- 该参数表示binlog日志自动删除/过期的天数，默认值为0，表示不自动删除
+show variables like 'expire_logs_days';
+show variables like 'binlog_expire_logs_seconds';
+-- 表示日志保留7天，7*24*3600秒后就自动过期。MySQL重启后会失效。
+set global expire_logs_days = 7;
+set global binlog_expire_logs_seconds = 604800;
+-- 手动删除binlog
+PURGE MASTER LOGS BEFORE DATE_SUB( NOW( ), INTERVAL 7 DAY);
 -- 查看binlog存放日志文件目录
 show variables like '%datadir%';
 -- 是否开启binlog
