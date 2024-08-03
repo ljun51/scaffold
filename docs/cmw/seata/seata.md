@@ -2,6 +2,15 @@
 
 Seata 是一款开源的分布式事务解决方案，致力于提供高性能和简单易用的分布式事务服务。Seata 将为用户提供了 AT、TCC、SAGA 和 XA 事务模式，为用户打造一站式的分布式解决方案。
 
+## 快速开始
+```shell
+docker run --name seata-server \
+      -p 8091:8091 \
+      -p 7091:7091 \
+      -e SEATA_PORT=8091 \
+      seataio/seata-server:2.0.0
+```
+
 ## 术语
 * `TC` Transaction Coordinator, 事物协调着。维护全局和分支事务的状态，驱动全局事物提交或回滚。
 * `TM` Transaction Manager, 事物管理器。定义全局事物的范围：开始全局事务、提交或回滚全局事务。
