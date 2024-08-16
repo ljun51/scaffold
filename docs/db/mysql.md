@@ -195,6 +195,13 @@ federated
 
 > create table t_1 (id int not null auto_increment primary key, c_str char(20) not null) engine federated connection = 'mysql://root:123456@192.168.0.233:3307/t_boy/t_tableB';
 
+### 全文索引支持中文
+> ALTER TABLE articles ADD FULLTEXT INDEX ft_index (title,body) WITH PARSER ngram;
+
+# Or:
+
+> CREATE FULLTEXT INDEX ft_index ON articles (title,body) WITH PARSER ngram;
+
 ### HOW TO FORCE UNLOCK for locked tables in MySQL
 
 1) Let's see the list of locked tables
@@ -228,6 +235,9 @@ lines terminated by '\r\n';
 **select * from** tablename
 
 **into outfile**'/tmp/a.csv'fields**terminatedby**","**escapedby**''**optionallyenclosedby**''**linesterminatedby**'\n';
+
+### 导出指定表前缀的表
+> mysqldump -h127.0.0.1 -uroot -p boytv $(mysql -h127.0.0.1 -uroot -p boytv -Bse "show tables like 'cms_%'") > "cms_20240809.sql"
 
 ### 看用户建立的表
 
